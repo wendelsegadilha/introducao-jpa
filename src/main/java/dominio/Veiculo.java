@@ -8,9 +8,8 @@ import javax.persistence.*;
 @Table(name = "tab_veiculo")
 public class Veiculo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo;
+    @EmbeddedId
+    private VeiculoId codigo;
 
     @Column(length = 60, nullable = false)
     private String fabricante;
@@ -30,7 +29,7 @@ public class Veiculo {
     public Veiculo() {
     }
 
-    public Veiculo(Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo, BigDecimal valor) {
+    public Veiculo(VeiculoId codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo, BigDecimal valor) {
         this.codigo = codigo;
         this.fabricante = fabricante;
         this.modelo = modelo;
@@ -39,11 +38,11 @@ public class Veiculo {
         this.valor = valor;
     }
 
-    public Long getCodigo() {
+    public VeiculoId getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Long codigo) {
+    public void setCodigo(VeiculoId codigo) {
         this.codigo = codigo;
     }
 

@@ -1,4 +1,5 @@
 import dominio.Veiculo;
+import dominio.VeiculoId;
 import util.JpaUtil;
 
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ public class PersistindoVeiculo {
         tx.begin();
 
         Veiculo veiculo = new Veiculo();
+        veiculo.setCodigo(new VeiculoId("DEF-123", "Bacabeira"));
         veiculo.setFabricante("Honda");
         veiculo.setModelo("Civic");
         veiculo.setAnoFabricacao(2020);
