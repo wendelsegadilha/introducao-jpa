@@ -1,5 +1,5 @@
+import dominio.TipoCombustivel;
 import dominio.Veiculo;
-import dominio.VeiculoId;
 import util.JpaUtil;
 
 import javax.persistence.EntityManager;
@@ -13,12 +13,12 @@ public class PersistindoVeiculo {
         tx.begin();
 
         Veiculo veiculo = new Veiculo();
-        veiculo.setCodigo(new VeiculoId("DEF-123", "Bacabeira"));
         veiculo.setFabricante("Honda");
         veiculo.setModelo("Civic");
         veiculo.setAnoFabricacao(2020);
         veiculo.setAnoModelo(2020);
         veiculo.setValor(new BigDecimal(90500));
+        veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
 
         manager.persist(veiculo);
         tx.commit();

@@ -8,8 +8,9 @@ import javax.persistence.*;
 @Table(name = "tab_veiculo")
 public class Veiculo {
 
-    @EmbeddedId
-    private VeiculoId codigo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codigo;
 
     @Column(length = 60, nullable = false)
     private String fabricante;
@@ -26,23 +27,28 @@ public class Veiculo {
     @Column(precision = 10, scale = 2, nullable = true)
     private BigDecimal valor;
 
+    @Column(name = "tipo_combustivel", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoCombustivel tipoCombustivel;
+
     public Veiculo() {
     }
 
-    public Veiculo(VeiculoId codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo, BigDecimal valor) {
+    public Veiculo(Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo, BigDecimal valor, TipoCombustivel tipoCombustivel) {
         this.codigo = codigo;
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.anoFabricacao = anoFabricacao;
         this.anoModelo = anoModelo;
         this.valor = valor;
+        this.tipoCombustivel = tipoCombustivel;
     }
 
-    public VeiculoId getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(VeiculoId codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 
@@ -84,6 +90,14 @@ public class Veiculo {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public TipoCombustivel getTipoCombustivel() {
+        return tipoCombustivel;
+    }
+
+    public void setTipoCombustivel(TipoCombustivel tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
     }
 
     @Override
