@@ -1,6 +1,7 @@
 package dominio;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -31,18 +32,14 @@ public class Veiculo {
     @Enumerated(EnumType.STRING)
     private TipoCombustivel tipoCombustivel;
 
-    public Veiculo() {
-    }
+    @Column(name = "data_cadastro", nullable = false)
+    private LocalDate dataCadastro;
 
-    public Veiculo(Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo, BigDecimal valor, TipoCombustivel tipoCombustivel) {
-        this.codigo = codigo;
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.anoFabricacao = anoFabricacao;
-        this.anoModelo = anoModelo;
-        this.valor = valor;
-        this.tipoCombustivel = tipoCombustivel;
-    }
+    /*
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro", nullable = false)
+    private Date dataCadastro; //equivalente ao LocalDate
+    */
 
     public Long getCodigo() {
         return codigo;
@@ -98,6 +95,14 @@ public class Veiculo {
 
     public void setTipoCombustivel(TipoCombustivel tipoCombustivel) {
         this.tipoCombustivel = tipoCombustivel;
+    }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     @Override

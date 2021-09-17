@@ -5,6 +5,7 @@ import util.JpaUtil;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class PersistindoVeiculo {
     public static void main(String[] args) {
@@ -19,6 +20,7 @@ public class PersistindoVeiculo {
         veiculo.setAnoModelo(2020);
         veiculo.setValor(new BigDecimal(90500));
         veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+        veiculo.setDataCadastro(LocalDate.now());
 
         manager.persist(veiculo);
         tx.commit();
