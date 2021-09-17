@@ -41,6 +41,9 @@ public class Veiculo {
     private Date dataCadastro; //equivalente ao LocalDate
     */
 
+    @Transient
+    private String descricaoCompleta; //propriedade será ignorada pelo mapeamento da JPA
+
     public Long getCodigo() {
         return codigo;
     }
@@ -103,6 +106,14 @@ public class Veiculo {
 
     public void setDataCadastro(LocalDate dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+
+    public String getDescricaoCompleta() {
+        return descricaoCompleta;
+    }
+
+    public void setDescricaoCompleta(String descricaoCompleta) {
+        this.descricaoCompleta = descricaoCompleta;
     }
 
     @Override
