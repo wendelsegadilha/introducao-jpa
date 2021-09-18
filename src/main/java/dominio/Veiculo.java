@@ -49,6 +49,9 @@ public class Veiculo {
     @Column(nullable = true)
     private byte[] foto;
 
+    @Embedded //usando objeto embutido
+    private Propietario propietario;
+
     @Transient
     private String descricaoCompleta; //propriedade será ignorada pelo mapeamento da JPA
 
@@ -138,6 +141,14 @@ public class Veiculo {
 
     public byte[] getFoto() {
         return foto;
+    }
+
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Propietario propietario) {
+        this.propietario = propietario;
     }
 
     @Override
