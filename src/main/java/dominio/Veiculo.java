@@ -41,6 +41,14 @@ public class Veiculo {
     private Date dataCadastro; //equivalente ao LocalDate
     */
 
+    @Lob //armazenar texto mutio longo
+    @Column(nullable = true)
+    private String especificacoes;
+
+    @Lob //armazena arquivos binários no banco
+    @Column(nullable = true)
+    private byte[] foto;
+
     @Transient
     private String descricaoCompleta; //propriedade será ignorada pelo mapeamento da JPA
 
@@ -114,6 +122,22 @@ public class Veiculo {
 
     public void setDescricaoCompleta(String descricaoCompleta) {
         this.descricaoCompleta = descricaoCompleta;
+    }
+
+    public String getEspecificacoes() {
+        return especificacoes;
+    }
+
+    public void setEspecificacoes(String especificacoes) {
+        this.especificacoes = especificacoes;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public byte[] getFoto() {
+        return foto;
     }
 
     @Override
